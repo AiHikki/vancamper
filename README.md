@@ -1,7 +1,7 @@
 
 # VanCamper
 
-VanCamper is a website where you can browse and purchase campers for your outdoor adventures
+VanCamper is a website where you can browse and rent campers for your outdoor adventures
 
 
 ## Tech Stack
