@@ -1,8 +1,17 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# VanCamper
 
-Currently, two official plugins are available:
+VanCamper is a website where you can browse and purchase campers for your outdoor adventures
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Tech Stack
+
+**Client:** React, Redux, TailwindCSS, React Router
+
+**Server:** mockAPI
+
+
+## Authors
+
+- [@ai_hikki](https://github.com/AiHikki)
+

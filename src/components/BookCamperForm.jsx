@@ -1,7 +1,6 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import CustomButton from './CustomButton';
 import { bookCamperSchema } from '../schemas';
-import DatepickerField from './DatepickerField/DatepickerField';
 
 const BookCamperForm = () => {
   return (
@@ -38,7 +37,6 @@ const BookCamperForm = () => {
               <Field
                 name="bookingDate"
                 type="date"
-                // component={DatepickerField}
                 placeholder="Booking date"
                 className="form_input"
               />

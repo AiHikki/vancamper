@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchAdverts, fetchAdvertById, createAdvert } from './operations';
+import { fetchAdverts, fetchAdvertById } from './operations';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -48,14 +48,7 @@ const slice = createSlice({
         state.isLoading = false;
         state.error = null;
       })
-      .addCase(fetchAdvertById.rejected, handleRejected)
-      .addCase(createAdvert.pending, handlePending)
-      .addCase(createAdvert.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-        state.items.unshift(action.payload);
-      })
-      .addCase(createAdvert.rejected, handleRejected);
+      .addCase(fetchAdvertById.rejected, handleRejected);
   },
 });
 

@@ -22,24 +22,7 @@ export const fetchAdvertById = createAsyncThunk(
       const { data } = await axios.get(`/advert/${id}`);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message); // Ensure return statement
-    }
-  }
-);
-
-//! dev
-
-export const createAdvert = createAsyncThunk(
-  'adverts/createAdvert',
-  async (advertData, thunkAPI) => {
-    try {
-      console.log('advertData', advertData);
-      const { data } = await axios.post('/advert', advertData);
-      console.log(data);
-      console.log('Pushed successfully');
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message); // Ensure return statement
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

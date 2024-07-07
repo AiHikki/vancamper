@@ -2,9 +2,10 @@ import { useSelector } from 'react-redux';
 import Card from '../components/Card';
 import CamperDetailsModal from '../components/CamperDetailsModal';
 import { Link } from 'react-router-dom';
+import { selectFavorites } from '../redux/adverts/selectors';
 
 const Favorites = () => {
-  const favorites = useSelector(state => state.adverts.favorites);
+  const favorites = useSelector(selectFavorites);
 
   return (
     <div className="flex gap-16">

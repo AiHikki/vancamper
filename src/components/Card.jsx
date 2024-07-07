@@ -3,7 +3,6 @@ import { FaStar } from 'react-icons/fa6';
 import icons from '../assets/icons.svg';
 import Category from './Category';
 import CustomButton from './CustomButton';
-import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { openModal } from '../redux/modal/slice';
 import { useSearchParams } from 'react-router-dom';
@@ -37,7 +36,6 @@ const Card = ({
   const [searchParams, setSearchParams] = useSearchParams();
   const favorites = useSelector(selectFavorites);
 
-  // Determine if this advert is a favorite based on Redux state
   const isFavorite = favorites.find(advert => advert._id === _id);
 
   const handleOpenModal = () => {

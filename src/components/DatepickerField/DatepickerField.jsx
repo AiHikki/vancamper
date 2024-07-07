@@ -1,9 +1,9 @@
 import Datepicker from 'react-datepicker';
 import { LuCalendar } from 'react-icons/lu';
 import 'react-datepicker/dist/react-datepicker.css';
-import './DatepickerField.css'; // Custom styles
+import './DatepickerField.css';
 
-const DatepickerField = ({ field, form, ...props }) => (
+const DatepickerField = ({ field, form }) => (
   <div className="relative">
     <Datepicker
       dateFormat="dd/MM/yyyy"
@@ -21,7 +21,7 @@ const DatepickerField = ({ field, form, ...props }) => (
           />
         </label>
       }
-      calendarClassName="custom-calendar" // Apply custom styles to calendar
+      calendarClassName="custom-calendar"
     />
   </div>
 );

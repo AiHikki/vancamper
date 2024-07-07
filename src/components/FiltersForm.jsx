@@ -11,6 +11,7 @@ const FiltersForm = () => {
 
   const handleSubmit = values => {
     dispatch(updateFilters(values));
+    alert("Oops... it's not working yet");
   };
   return (
     <>
