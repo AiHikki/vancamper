@@ -13,6 +13,7 @@ const BookCamperForm = () => {
       </div>
       <Formik
         onSubmit={values => {
+          location.reload();
           console.log(values);
         }}
         validationSchema={bookCamperSchema}

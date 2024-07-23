@@ -3,7 +3,18 @@ import BookCamperForm from './BookCamperForm';
 import { addSpace } from '../utils';
 
 const Features = ({
-  advert: { details, engine, transmission, length, width, tank, height, consumption, form, adults },
+  features: {
+    details,
+    engine,
+    transmission,
+    length,
+    width,
+    tank,
+    height,
+    consumption,
+    form,
+    adults,
+  },
 }) => {
   return (
     <div className="flex gap-6 mt-11" id="features">

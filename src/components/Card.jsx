@@ -5,7 +5,7 @@ import Category from './Category';
 import CustomButton from './CustomButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { openModal } from '../redux/modal/slice';
-import { useSearchParams } from 'react-router-dom';
+import CamperDetailsModal from './CamperDetailsModal';
 import { addToFavorites, removeFromFavorites } from '../redux/adverts/slice';
 import { selectFavorites } from '../redux/adverts/selectors';
 
@@ -33,13 +33,11 @@ const Card = ({
   },
 }) => {
   const dispatch = useDispatch();
-  const [searchParams, setSearchParams] = useSearchParams();
   const favorites = useSelector(selectFavorites);
 
   const isFavorite = favorites.find(advert => advert._id === _id);
 
   const handleOpenModal = () => {
-    setSearchParams({ id: _id });
     dispatch(openModal());
   };
 
@@ -131,6 +129,28 @@ const Card = ({
           Show more
         </CustomButton>
       </div>
+
+      <CamperDetailsModal
+        details={{
+          name,
+          rating,
+          reviews,
+          location,
+          price,
+          gallery,
+          description,
+          details,
+          engine,
+          transmission,
+          length,
+          width,
+          tank,
+          height,
+          consumption,
+          form,
+          adults,
+        }}
+      />
     </li>
   );
 };

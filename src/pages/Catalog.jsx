@@ -6,7 +6,6 @@ import toast from 'react-hot-toast';
 import { fetchAdverts } from '../redux/adverts/operations';
 import LoadMoreButton from '../components/LoadMoreButton';
 import { selectIsLoading, selectHasMore } from '../redux/adverts/selectors';
-import CamperDetailsModal from '../components/CamperDetailsModal';
 
 const Catalog = () => {
   const dispatch = useDispatch();
@@ -40,7 +39,6 @@ const Catalog = () => {
           </div>
         )}
       </div>
-      <CamperDetailsModal />
     </div>
   );
 };

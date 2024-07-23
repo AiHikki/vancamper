@@ -2,10 +2,7 @@ import Modal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsOpen } from '../redux/modal/selectors';
 import { closeModal } from '../redux/modal/slice';
-import { useEffect, useState } from 'react';
-import { fetchAdvertById } from '../redux/adverts/operations';
-import { useSearchParams } from 'react-router-dom';
-import toast from 'react-hot-toast';
+import { useState } from 'react';
 import { IoClose } from 'react-icons/io5';
 import { formatPrice } from '../utils';
 import { FaStar } from 'react-icons/fa6';
@@ -16,12 +13,29 @@ import Reviews from './Reviews';
 
 Modal.setAppElement('#root');
 
-const CamperDetailsModal = () => {
+const CamperDetailsModal = ({
+  details: {
+    name,
+    rating,
+    reviews,
+    location,
+    price,
+    gallery,
+    description,
+    details,
+    engine,
+    transmission,
+    length,
+    width,
+    tank,
+    height,
+    consumption,
+    form,
+    adults,
+  },
+}) => {
   const dispatch = useDispatch();
   const isOpen = useSelector(selectIsOpen);
-  const [advert, setAdvert] = useState(null);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const advertId = searchParams.get('id');
   const [isActive, setIsActive] = useState({
     features: false,
     reviews: false,
@@ -34,19 +48,10 @@ const CamperDetailsModal = () => {
     });
   };
 
-  useEffect(() => {
-    if (!advertId) return;
-    dispatch(fetchAdvertById({ id: advertId }))
-      .then(data => setAdvert(data.payload))
-      .catch(() => toast.error('Oops... Something went wrong.', { id: 'error' }));
-  }, [dispatch, advertId]);
-
   const handleCloseModal = () => {
-    setSearchParams({});
+    setIsActive({ features: false, reviews: false });
     dispatch(closeModal());
   };
-
-  if (!advert) return;
 
   return (
     <>
@@ -76,7 +81,7 @@ const CamperDetailsModal = () => {
         }}
       >
         <div className="flex items-center justify-between mb-2">
-          <p className="font-semibold text-primary text-2xl">{advert.name}</p>
+          <p className="font-semibold text-primary text-2xl">{name}</p>
           <button
             onClick={handleCloseModal}
             className="border-none bg-transparent flex items-center justify-center"
@@ -89,34 +94,32 @@ const CamperDetailsModal = () => {
           <div className="flex items-center gap-1">
             <FaStar color="#FFC531" size={16} />
             <span className="underline underline-offset-4 text-primary font-normal text-base">
-              {advert.rating}({advert.reviews?.length} Reviews)
+              {rating}({reviews?.length} Reviews)
             </span>
           </div>
           <div className="flex items-center gap-1">
             <svg className="w-4 h-4 fill-primary">
               <use href={`${icons}#map-pin`}></use>
             </svg>
-            <span className="text-primary font-normal text-base">{advert.location}</span>
+            <span className="text-primary font-normal text-base">{location}</span>
           </div>
         </div>
 
-        <div className="font-semibold text-primary text-2xl mb-6">
-          &euro;{formatPrice(advert.price)}
-        </div>
+        <div className="font-semibold text-primary text-2xl mb-6">&euro;{formatPrice(price)}</div>
 
         <div className="flex gap-4 mb-6 ">
-          {advert.gallery?.length > 1 &&
-            advert.gallery.map((url, i) => (
+          {gallery?.length > 1 &&
+            gallery.map((url, i) => (
               <img
                 key={i}
                 src={url}
-                alt={advert.name}
+                alt={name}
                 className="w-[290px] h-[310px]  rounded-[10px] object-cover bg-snow-white"
               />
             ))}
         </div>
 
-        <p className="font-normal text-slate-blue text-base mb-11">{advert.description}</p>
+        <p className="font-normal text-slate-blue text-base mb-11">{description}</p>
 
         <div>
           <div className="flex gap-10 items-center">
@@ -147,8 +150,23 @@ const CamperDetailsModal = () => {
           <hr />
         </div>
 
-        {isActive.features && <Features advert={advert} />}
-        {isActive.reviews && <Reviews reviews={advert.reviews} />}
+        {isActive.features && (
+          <Features
+            features={{
+              details,
+              engine,
+              transmission,
+              length,
+              width,
+              tank,
+              height,
+              consumption,
+              form,
+              adults,
+            }}
+          />
+        )}
+        {isActive.reviews && <Reviews reviews={reviews} />}
       </Modal>
     </>
   );

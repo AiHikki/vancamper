@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import Card from '../components/Card';
-import CamperDetailsModal from '../components/CamperDetailsModal';
 import { Link } from 'react-router-dom';
 import { selectFavorites } from '../redux/adverts/selectors';
 
@@ -35,7 +34,6 @@ const Favorites = () => {
           </ul>
         )}
       </div>
-      <CamperDetailsModal />
     </div>
   );
 };
